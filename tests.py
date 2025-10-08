@@ -104,3 +104,21 @@ def test_delete_book_from_favorites(collector):
     collector.add_book_in_favorites("Гарри Поттер")
     collector.delete_book_from_favorites("Гарри Поттер")
     assert collector.get_list_of_favorites_books() == []
+def test_get_books_genre_returns_correct_genre():
+    collector = BooksCollector()
+    collector.add_new_book("Гарри Поттер")
+    collector.set_book_genre("Гарри Поттер", "Фэнтези")
+
+    result = collector.get_books_genre("Гарри Поттер")
+    assert result == "Фэнтези", "Метод get_books_genre должен возвращать корректный жанр книги"
+
+
+def test_get_list_of_favorites_books_returns_correct_list():
+    collector = BooksCollector()
+    collector.add_new_book("Гарри Поттер")
+    collector.add_new_book("Шерлок Холмс")
+    collector.add_book_in_favorites("Гарри Поттер")
+
+    result = collector.get_list_of_favorites_books()
+    assert result == ["Гарри Поттер"], "Метод get_list_of_favorites_books должен возвращать список избранных книг"
+
