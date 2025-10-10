@@ -1,8 +1,6 @@
 import pytest
 from main import BooksCollector
 
-# Добавлены позитивные проверки для get_books_genre и get_list_of_favorites_books
-
 @pytest.fixture
 def collector():
     return BooksCollector()
