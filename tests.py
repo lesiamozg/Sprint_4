@@ -122,3 +122,18 @@ def test_get_list_of_favorites_books_returns_correct_list():
     result = collector.get_list_of_favorites_books()
     assert result == ["Гарри Поттер"], "Метод get_list_of_favorites_books должен возвращать список избранных книг"
 
+def test_get_books_genre():
+    collector = BooksCollector()
+    collector.add_new_book("Книга 6")
+    collector.set_book_genre("Книга 6", "Комедии")
+    books_dict = collector.get_books_genre()
+    assert books_dict == {"Книга 6": "Комедии"}
+
+def test_get_list_of_favorites_books():
+    collector = BooksCollector()
+    collector.add_new_book("Фаворит 1")
+    collector.add_new_book("Фаворит 2")
+    collector.add_book_in_favorites("Фаворит 1")
+    collector.add_book_in_favorites("Фаворит 2")
+    fav_list = collector.get_list_of_favorites_books()
+    assert fav_list == ["Фаворит 1", "Фаворит 2"]
